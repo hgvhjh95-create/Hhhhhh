@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مستر محمد نصر عرب - أقسى أستاذ في التاريخ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c0392b;
+    --dark-red: #7b241c;
+    --black: #0a0a0a;
+    --yellow: #f39c12;
+    --cream: #fdf6e3;
+    --dark: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Cairo', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ===== ANIMATED BG ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(243,156,18,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 3px solid var(--red);
+    background: linear-gradient(180deg, rgba(192,57,43,0.2) 0%, transparent 100%);
+  }
+
+  .warning-tape {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--yellow),
+      var(--yellow) 20px,
+      var(--black) 20px,
+      var(--black) 40px
+    );
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0.9;
+  }
+
+  .skull {
+    font-size: 80px;
+    animation: float 3s ease-in-out infinite;
+    display: block;
+    margin: 20px auto 10px;
+    filter: drop-shadow(0 0 20px rgba(192,57,43,0.8));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+  }
+
+  header h1 {
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 900;
+    color: var(--red);
+    text-shadow: 3px 3px 0 var(--dark-red), 0 0 40px rgba(192,57,43,0.5);
+    line-height: 1.2;
+  }
+
+  header h1 span {
+    color: var(--yellow);
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-top: 10px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== DANGER METER ===== */
+  .danger-section {
+    position: relative;
+    z-index: 5;
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .meter-label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--yellow);
+    margin-bottom: 15px;
+  }
+
+  .meter-bar {
+    height: 40px;
+    background: #222;
+    border-radius: 20px;
+    border: 2px solid var(--red);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .meter-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #f39c12, #e74c3c, #c0392b);
+    border-radius: 20px;
+    transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 10px;
+  }
+
+  .meter-fill::after {
+    content: '🔥';
+    font-size: 1.5rem;
+    position: absolute;
+    left: 5px;
+    animation: pulse 0.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.3); }
+  }
+
+  .meter-text {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: white;
+    padding-left: 10px;
+  }
+
+  /* ===== STATS GRID ===== */
+  .stats-section {
+    position: relative;
+    z-index: 5;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--red);
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--yellow);
+    margin: 10px auto 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid rgba(192,57,43,0.4);
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(192,57,43,0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .stat-card:hover::before { opacity: 1; }
+  .stat-card:hover { transform: translateY(-5px) scale(1.02); border-color: var(--red); }
+
+  .stat-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; }
+
+  .stat-number {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--red);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-top: 5px;
+  }
+
+  /* ===== QUOTES ===== */
+  .quotes-section {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .quote-card {
+    background: rgba(192,57,43,0.08);
+    border-right: 5px solid var(--red);
+    border-radius: 0 16px 16px 0;
+    padding: 25px 30px;
+    margin-bottom: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease both;
+  }
+
+  .quote-card:hover {
+    background: rgba(192,57,43,0.15);
+    transform: translateX(-5px);
+  }
+
+  .quote-text {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.7;
+  }
+
+  .quote-mark {
+    font-size: 4rem;
+    color: var(--red);
+    opacity: 0.4;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-family: serif;
+    line-height: 1;
+  }
+
+  /* ===== RULES ===== */
+  .rules-section {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .rules-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+  }
+
+  .rules-list li {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .rules-list li:hover {
+    background: rgba(192,57,43,0.1);
+    border-color: rgba(192,57,43,0.5);
+    transform: scale(1.02);
+  }
+
+  .rules-list li .rule-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== SURVIVAL TIPS ===== */
+  .tips-section {
+    position: relative;
+    z-index: 5;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background: rgba(243,156,18,0.05);
+    border: 1px solid rgba(243,156,18,0.2);
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+
+  .tip-item:hover {
+    background: rgba(243,156,18,0.1);
+    transform: translateX(-5px);
+  }
+
+  .tip-number {
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 900;
+    font-size: 1.1rem;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tip-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.6;
+  }
+
+  /* ===== QUIZ ===== */
+  .quiz-section {
+    position: relative;
+    z-index: 5;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .quiz-box {
+    background: rgba(255,255,255,0.03);
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .quiz-question {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+
+  .quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .quiz-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 15px 10px;
+    color: var(--cream);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .quiz-btn:hover { background: rgba(192,57,43,0.2); border-color: var(--red); }
+  .quiz-btn.correct { background: rgba(39,174,96,0.3); border-color: #27ae60; }
+  .quiz-btn.wrong { background: rgba(192,57,43,0.3); border-color: var(--red); }
+
+  .quiz-result {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+  }
+
+  .next-btn {
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    display: none;
+    transition: all 0.2s;
+  }
+
+  .next-btn:hover { background: var(--dark-red); transform: scale(1.05); }
+
+  /* ===== RATING ===== */
+  .rating-section {
+    position: relative;
+    z-index: 5;
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .stars-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    direction: ltr;
+  }
+
+  .star {
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    filter: grayscale(100%);
+    opacity: 0.4;
+  }
+
+  .star:hover, .star.active {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  .rating-msg {
+    font-size: 1.2rem;
+    font-weight: 700;
+    min-height: 2em;
+    color: var(--yellow);
+    transition: all 0.3s;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 2px solid rgba(192,57,43,0.3);
+    margin-top: 60px;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  footer span { color: var(--red); }
+
+  /* ===== SCROLL ANIMATION ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== PANIC BUTTON ===== */
+  .panic-section {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .panic-btn {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 20px 50px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 10px 40px rgba(192,57,43,0.5);
+    transition: all 0.2s;
+    animation: shakePanic 4s ease-in-out infinite;
+  }
+
+  @keyframes shakePanic {
+    0%, 90%, 100% { transform: translateX(0); }
+    92% { transform: translateX(-5px) rotate(-1deg); }
+    94% { transform: translateX(5px) rotate(1deg); }
+    96% { transform: translateX(-5px) rotate(-1deg); }
+    98% { transform: translateX(5px) rotate(1deg); }
+  }
+
+  .panic-btn:hover { transform: scale(1.05); box-shadow: 0 15px 50px rgba(192,57,43,0.7); }
+
+  .panic-result {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    min-height: 2em;
+    color: var(--yellow);
+  }
+
+  /* ===== TICKER ===== */
+  .news-ticker {
+    background: var(--red);
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 25s linear infinite;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width: 600px) {
+    .quiz-options { grid-template-columns: 1fr; }
+    header h1 { font-size: 2rem; }
+    .stat-number { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NEWS TICKER -->
+<div class="news-ticker">
+  <span class="ticker-inner">
+    🚨 تحذير عاجل: مستر محمد نصر عرب قادم للفصل! 📚 انتبه للواجبات! 📝 الاستذكار إجباري 24/7! ☠️ مفيش شفقة في الامتحانات! 🔥 الشرح هيفضل لحد ما يفهم الجميع! ⚡ الهدوء في الفصل مش اختياري! 💀 من غاب يندم! 🚨
+  </span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="warning-tape"></div>
+  <span class="skull">💀</span>
+  <h1>مستر <span>محمد نصر عرب</span></h1>
+  <p class="subtitle">أقسى ✦ أصعب ✦ الأكثر رعباً ✦ في تاريخ التعليم</p>
+</header>
+
+<!-- DANGER METER -->
+<div class="danger-section reveal">
+  <div class="meter-label">⚠️ مستوى القسوة الرسمي</div>
+  <div class="meter-bar">
+    <div class="meter-fill" id="dangerFill">
+      <span class="meter-text">9999% قاسي</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section reveal">
+  <h2 class="section-title">📊 إحصائيات مرعبة</h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-icon">📝</span>
+      <span class="stat-number" data-target="47">0</span>
+      <div class="stat-label">واجب في الأسبوع الواحد</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">😱</span>
+      <span class="stat-number" data-target="100">0</span>
+      <div class="stat-label">% نسبة الخوف في الفصل</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">📚</span>
+      <span class="stat-number" data-target="3</span>">0</span>
+      <div class="stat-label">ساعات الشرح بدون توقف</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">😤</span>
+      <span class="stat-number" data-target="0">0</span>
+      <div class="stat-label">مرة قال "تمام يا ولاد" في حياته</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">🏃</span>
+      <span class="stat-number" data-target="156">0</span>
+      <div class="stat-label">تلميذ راح يأجل الامتحان</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">☕</span>
+      <span class="stat-number" data-target="12">0</span>
+      <div class="stat-label">كوباية نسكافيه في اليوم</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTES -->
+<div class="quotes-section reveal">
+  <h2 class="section-title">🗣️ أشهر عباراته الخالدة</h2>
+
+  <div class="quote-card">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">إيه ده؟! ده اللي اتذاكرته من أول الترم؟! حاسبك بنفسك!</p>
+  </div>
+
+  <div class="quote-card">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">مفيش حد فاهم؟ تمام، هعيد الشرح من الأول... من الجزء الأول.</p>
+  </div>
+
+  <div class="quote-card">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">الواجب مش اختياري. الواجب حياة!</p>
+  </div>
+
+  <div class="quote-card">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">إنتوا عايزين تنجحوا؟ ولا عايزين تعيشوا سعداء؟ اختاروا واحدة!</p>
+  </div>
+
+  <div class="quote-card">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">السؤال ده سهل... لو اتذاكرت. اتذاكرت؟ أيوه، بالظبط.</p>
+  </div>
+
+  <div class="quote-card">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">مش مشكلتي إنك صحيان من النوم. المشكلة إنك صحيت في وسط الدرس!</p>
+  </div>
+</div>
+
+<!-- RULES -->
+<div class="rules-section reveal">
+  <h2 class="section-title">📜 قوانين الفصل المقدسة</h2>
+  <ul class="rules-list">
+    <li>
+      <span class="rule-icon">🤫</span>
+      الهدوء الكامل أو الطرد الكامل
+    </li>
+    <li>
+      <span class="rule-icon">📓</span>
+      الواجب قبل الأكل والشرب
+    </li>
+    <li>
+      <span class="rule-icon">⏰</span>
+      التأخير = إعادة الشرح من أول وجديد
+    </li>
+    <li>
+      <span class="rule-icon">📱</span>
+      الموبايل يختفي أو صاحبه يختفي
+    </li>
+    <li>
+      <span class="rule-icon">🙋</span>
+      السؤال مسموح. الغباء ممنوع.
+    </li>
+    <li>
+      <span class="rule-icon">💤</span>
+      النوم في الفصل = نوم في الامتحان
+    </li>
+    <li>
+      <span class="rule-icon">📝</span>
+      المذاكرة مش لما الامتحان قرب
+    </li>
+    <li>
+      <span class="rule-icon">🔇</span>
+      الضحك ممنوع... إلا لو هو بضحك
+    </li>
+  </ul>
+</div>
+
+<!-- SURVIVAL TIPS -->
+<div class="tips-section reveal">
+  <h2 class="section-title">🛡️ دليل النجاة من درسه</h2>
+
+  <div class="tip-item">
+    <div class="tip-number">١</div>
+    <div class="tip-text">اعمل الواجب حتى لو مش فاهم فيه حاجة. الورقة الفاضية أخطر من الإجابة الغلط.</div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-number">٢</div>
+    <div class="tip-text">اوصل قبله بـ 10 دقايق على الأقل. الكرسي لازم يكون دافي قبل ما يدخل.</div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-number">٣</div>
+    <div class="tip-text">اعمل إنك بتكتب حتى لو مش بتكتب. الحركة بالقلم تقنعه إنك مذاكر.</div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-number">٤</div>
+    <div class="tip-text">لو بيسألك سؤال مش عارفه، قول "أنا كنت هقول نفس الكلام يا مستر" — ممكن تنجح.</div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-number">٥</div>
+    <div class="tip-text">ابتسم دايماً. الابتسامة مش هتنقذك بس هتخليه يتردد قبل ما يزعل.</div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-number">٦</div>
+    <div class="tip-text">احفظ الكتاب من أول لآخر. مش المهم تفهم، المهم تردد بسرعة.</div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-section reveal">
+  <h2 class="section-title">🧠 اختبر معلوماتك</h2>
+  <div class="quiz-box">
+    <div class="quiz-question" id="quizQuestion">جاهز للاختبار؟</div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <div class="quiz-result" id="quizResult"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">السؤال الجاي ←</button>
+  </div>
+</div>
+
+<!-- PANIC BUTTON -->
+<div class="panic-section reveal">
+  <h2 class="section-title" style="margin-bottom:20px;">🚨 زر الطوارئ</h2>
+  <button class="panic-btn" onclick="activatePanic()">
+    😱 مستر محمد نصر جاي!
+  </button>
+  <div class="panic-result" id="panicResult"></div>
+</div>
+
+<!-- RATING -->
+<div class="rating-section reveal">
+  <h2 class="section-title">⭐ قيّم قسوته</h2>
+  <p style="color:#aaa; margin-bottom:10px;">من 1 إلى 5 (الكل عارف الإجابة)</p>
+  <div class="stars-container">
+    <span class="star" onclick="rate(5)" onmouseover="hoverStars(5)" onmouseout="unhoverStars()">💀</span>
+    <span class="star" onclick="rate(4)" onmouseover="hoverStars(4)" onmouseout="unhoverStars()">💀</span>
+    <span class="star" onclick="rate(3)" onmouseover="hoverStars(3)" onmouseout="unhoverStars()">💀</span>
+    <span class="star" onclick="rate(2)" onmouseover="hoverStars(2)" onmouseout="unhoverStars()">💀</span>
+    <span class="star" onclick="rate(1)" onmouseover="hoverStars(1)" onmouseout="unhoverStars()">💀</span>
+  </div>
+  <div class="rating-msg" id="ratingMsg"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>صُنع بـ <span>😱</span> وكثير من الخوف</p>
+  <p style="margin-top:8px; font-size:0.8rem;">مستر محمد نصر عرب — الأسطورة، الرعب، المعلم الأعظم</p>
+</footer>
+
+<script>
+  // ===== SCROLL REVEAL =====
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // ===== DANGER METER =====
+  setTimeout(() => {
+    document.getElementById('dangerFill').style.width = '99%';
+  }, 500);
+
+  // ===== COUNT UP =====
+  function countUp(el, target, duration = 2000) {
+    let start = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { el.textContent = target; clearInterval(timer); return; }
+      el.textContent = Math.floor(start);
+    }, 16);
+  }
+
+  const statObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseInt(e.target.dataset.target);
+        countUp(e.target, target);
+        statObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-target]').forEach(el => statObs.observe(el));
+  // fix the broken stat
+  document.querySelectorAll('[data-target]')[2].dataset.target = "3";
+
+  // ===== QUIZ =====
+  const questions = [
+    {
+      q: "لو نسيت الواجب، أحسن حاجة تعملها هي؟",
+      options: ["تقول نسيت", "تهرب من الفصل", "تعمل إنك مريض", "تعمل الواجب في الفرصة بسرعة"],
+      correct: 3
+    },
+    {
+      q: "مستر محمد نصر بيشرح موضوع وحد مش فاهم. هيعمل إيه؟",
+      options: ["يكمل الدرس", "يرجع يشرح للكل من الأول", "يقول 'اتذاكروا في البيت'", "يشرح بسرعة ويمشي"],
+      correct: 1
+    },
+    {
+      q: "إيه أخطر حاجة تعملها في درسه؟",
+      options: ["تنسى قلم", "تنام", "تضحك", "تطلب تروح الحمام"],
+      correct: 1
+    },
+    {
+      q: "لو جبت في الامتحان 95، هيقولك إيه؟",
+      options: ["برافو!", "تمام", "فين الخمسة التانيين؟!", "كويس"],
+      correct: 2
+    },
+    {
+      q: "مستر محمد نصر بيذاكر بنفسه كل يوم؟",
+      options: ["لأ أكيد", "مش مهم", "أيوه طبعاً", "ما حدش يعرف"],
+      correct: 2
+    }
+  ];
+
+  let currentQ = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    const q = questions[currentQ];
+    document.getElementById('quizQuestion').textContent = `سؤال ${currentQ + 1}/${questions.length}: ${q.q}`;
+    document.getElementById('quizResult').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'none';
+    const opts = document.getElementById('quizOptions');
+    opts.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-btn';
+      btn.textContent = opt;
+      btn.onclick = () => answer(i, q.correct);
+      opts.appendChild(btn);
+    });
+  }
+
+  function answer(chosen, correct) {
+    const btns = document.querySelectorAll('.quiz-btn');
+    btns.forEach((b, i) => {
+      b.disabled = true;
+      if (i === correct) b.classList.add('correct');
+      if (i === chosen && chosen !== correct) b.classList.add('wrong');
+    });
+    const result = document.getElementById('quizResult');
+    result.style.display = 'block';
+    if (chosen === correct) {
+      score++;
+      result.textContent = '✅ صح! مستر محمد نصر كان هيقول "مش بطال"';
+      result.style.background = 'rgba(39,174,96,0.2)';
+      result.style.color = '#2ecc71';
+    } else {
+      result.textContent = '❌ غلط! مستر محمد نصر: "إنتوا بتشتغلوا بالخبط!"';
+      result.style.background = 'rgba(192,57,43,0.2)';
+      result.style.color = '#e74c3c';
+    }
+    document.getElementById('nextBtn').style.display = 'inline-block';
+    if (currentQ === questions.length - 1) {
+      document.getElementById('nextBtn').textContent = 'شوف نتيجتك 🎓';
+    }
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    if (currentQ < questions.length) {
+      loadQuestion();
+    } else {
+      const box = document.querySelector('.quiz-box');
+      const msg = score >= 4 ? '🏆 ممتاز! مستر محمد نصر هيكون فخور (ربما)' :
+                  score >= 2 ? '😅 لا بأس، كمّل المذاكرة!' :
+                  '💀 مستر محمد نصر: "روح اتذاكر تاني!"';
+      box.innerHTML = `
+        <div class="quiz-question">النتيجة النهائية: ${score}/${questions.length}</div>
+        <div style="font-size:3rem;margin:20px 0">${score >= 4 ? '🎓' : score >= 2 ? '📚' : '😱'}</div>
+        <div style="font-size:1.1rem;color:var(--yellow);font-weight:700">${msg}</div>
+        <button class="next-btn" style="display:block;margin:20px auto 0" onclick="restartQuiz()">العب تاني 🔄</button>
+      `;
+    }
+  }
+
+  function restartQuiz() {
+    currentQ = 0; score = 0;
+    document.querySelector('.quiz-box').innerHTML = `
+      <div class="quiz-question" id="quizQuestion"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-result" id="quizResult"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">السؤال الجاي ←</button>
+    `;
+    loadQuestion();
+  }
+
+  loadQuestion();
+
+  // ===== PANIC BUTTON =====
+  const panicMessages = [
+    "🏃 اجري! اجري بسرعة! اترك كل حاجة!",
+    "📚 اخبي الكتاب المفتوح وفتح صفحة الواجب!",
+    "😇 اعمل وشك ملاكي وإنت بتتذاكر!",
+    "💨 روح الحمام دلوقتي، الفرصة الأخيرة!",
+    "🙏 صلي على النبي... مش هينفع بس اعمل حاجة!",
+    "📝 اكتب حاجة على الورقة، أي حاجة، بسرعة!",
+    "😴 صحّي جارك اللي نايم قبل ما المستر يشوفه!",
+    "🎭 اعمل إنك مريض. الوجه الشاحب بيساعد."
+  ];
+
+  function activatePanic() {
+    const msg = panicMessages[Math.floor(Math.random() * panicMessages.length)];
+    const result = document.getElementById('panicResult');
+    result.textContent = msg;
+    result.style.animation = 'none';
+    setTimeout(() => result.style.animation = '', 10);
+    document.body.style.animation = 'shake 0.3s ease';
+    setTimeout(() => document.body.style.animation = '', 300);
+  }
+
+  // ===== RATING =====
+  const ratingMessages = [
+    ["", "ده مجاملة... لكن تمام", "معقول", "قاسي بجد", "أقسى من كده؟ مستحيل", "💀 أقسى من أي وصف!"]
+  ];
+
+  const msgs = ["", "أيوه... نعمة بتاعة!", "كويس بس استنا 😏", "قاسي فعلاً بس بيحبك!", "يا ريت ما حكمتش! 😰", "💀 الرقم ده غير كافي للوصف!"];
+
+  function hoverStars(n) {
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((s, i) => {
+      s.classList.toggle('active', i >= (5 - n));
+    });
+  }
+
+  function unhoverStars() {
+    document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
+  }
+
+  let rated = false;
+  function rate(n) {
+    document.getElementById('ratingMsg').textContent = msgs[n];
+    rated = true;
+    document.querySelectorAll('.star').forEach((s, i) => {
+      s.classList.toggle('active', i >= (5 - n));
+    });
+  }
+</script>
+</body>
+</html>
